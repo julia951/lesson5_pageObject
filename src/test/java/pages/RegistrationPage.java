@@ -10,27 +10,26 @@ import java.io.File;
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;
-import static tests.TestData.*;
 
 public class RegistrationPage {
     private SelenideElement
-            formTitle= $(".practice-form-wrapper"),
-            firstNameInput= $("#firstName"),
-            lastNameInput= $("#lastName"),
-            emailInput= $("#userEmail"),
-            phoneNumberInput= $("#userNumber"),
-            subjectInputLabel= $("#subjectsInput"),
-            hobbyCheckbox= $("#hobbiesWrapper"),
+            formTitle = $(".practice-form-wrapper"),
+            firstNameInput = $("#firstName"),
+            lastNameInput = $("#lastName"),
+            emailInput = $("#userEmail"),
+            phoneNumberInput = $("#userNumber"),
+            subjectInputLabel = $("#subjectsInput"),
+            hobbyCheckbox = $("#hobbiesWrapper"),
             uploadPictureInput = $("#uploadPicture"),
-            addressInput= $("#currentAddress"),
-            birtdayDropdown=$("#dateOfBirthInput"),
-            stateDropdown= $("#state"),
-            cityDropdown= $("#city"),
-            stateWrapper= $("#stateCity-wrapper"),
-            submitButton= $("#submit"),
-            genderFemaleRadioButton= $("[name=gender][value=Female]");
+            addressInput = $("#currentAddress"),
+            birtdayDropdown = $("#dateOfBirthInput"),
+            stateDropdown = $("#state"),
+            cityDropdown = $("#city"),
+            stateWrapper = $("#stateCity-wrapper"),
+            submitButton = $("#submit"),
+            genderFemaleRadioButton = $("#genterWrapper").$(byText("Female"));
 
-   // public String FORM_TITLE="Student Registration Form";
+    // public String FORM_TITLE="Student Registration Form";
 
     CalendarComponent calendarComponent = new CalendarComponent();
     ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
@@ -43,23 +42,23 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage typeFirstName(String value){
+    public RegistrationPage typeFirstName(String value) {
         firstNameInput.setValue(value);
         return this;
     }
 
-    public RegistrationPage typeLastName(String value){
+    public RegistrationPage typeLastName(String value) {
         lastNameInput.val(value);
         return this;
     }
 
-    public RegistrationPage typeEmailAddress(String value){
+    public RegistrationPage typeEmailAddress(String value) {
         emailInput.val(value);
         return this;
     }
 
-    public RegistrationPage chooseFemaleGender(){
-        genderFemaleRadioButton.parent().click();
+    public RegistrationPage chooseFemaleGender() {
+        genderFemaleRadioButton.click();
         return this;
     }
 
@@ -69,38 +68,38 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage typePhoneNumber(String value){
+    public RegistrationPage typePhoneNumber(String value) {
         phoneNumberInput.val(value);
         return this;
     }
 
-    public RegistrationPage chooseSubject(String value){
+    public RegistrationPage chooseSubject(String value) {
         subjectInputLabel.val(value).pressEnter();
         return this;
     }
 
-    public RegistrationPage chooseHobby(String value){
+    public RegistrationPage chooseHobby(String value) {
         hobbyCheckbox.$(byText(value)).click();
         return this;
     }
 
-    public RegistrationPage uploadPicture(String value){
-        uploadPictureInput.uploadFile (new File("src/test/resources/1.png"));
+    public RegistrationPage uploadPicture() {
+        uploadPictureInput.uploadFromClasspath(("1.png"));
         return this;
     }
 
-    public RegistrationPage typeCurrentAddress(String value){
+    public RegistrationPage typeCurrentAddress(String value) {
         addressInput.val(value);
         return this;
     }
 
-    public RegistrationPage chooseState(String value){
+    public RegistrationPage chooseState(String value) {
         stateDropdown.click();
         stateWrapper.$(byText(value)).click();
         return this;
     }
 
-    public RegistrationPage chooseCity(String value){
+    public RegistrationPage chooseCity(String value) {
         cityDropdown.click();
         stateWrapper.$(byText(value)).click();
         return this;
@@ -115,13 +114,14 @@ public class RegistrationPage {
         submitButton.scrollIntoView(true);
         return this;
     }
-    public RegistrationPage checkFormOpened(String value){
+
+    public RegistrationPage checkFormOpened() {
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         return this;
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        resultsTableComponent.checkResult(key,value);
+        resultsTableComponent.checkResult(key, value);
         return this;
     }
 }

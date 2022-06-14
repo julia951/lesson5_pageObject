@@ -11,8 +11,6 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.startMaximized=true;
-
-        //Configuration.holdBrowserOpen = true;
+        Configuration.startMaximized = true;
     }
 }
